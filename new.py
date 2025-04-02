@@ -302,7 +302,7 @@ def visualize_data(X, original_X=None):
     return
 
 # Hàm chuyển đổi và chuẩn hóa dữ liệu, sau đó chia Train-Test
-def preprocess_data(X, y, test_size=0.2, random_state=42):
+def preprocess_data(X, y, test_size=0.25, random_state=42):
     
     print("\n--- Starting Data Preprocessing (Scaling, Encoding, Splitting) ---")
 
@@ -582,15 +582,16 @@ def train_models(X_train, X_test, y_train, y_test):
     models = {
         'Logistic Regression': LogisticRegression(
             max_iter=2000,  # Tang so vong lap toi da
-            C=1.0,          # Tham so dieu chinh regularization
+            # C=1.0,          # Tham so dieu chinh regularization
+            C=0.05,
             solver='liblinear',  # Toi uu cho du lieu co nhieu dac trung
             class_weight='balanced',  # Can bang trong so cac lop
             random_state=42
         ),
         'Decision Tree': DecisionTreeClassifier(
-            max_depth=10,   # Gioi han do sau de tranh overfitting
-            min_samples_split=20,  # Yeu cau it nhat 20 mau de phan tach
-            min_samples_leaf=10,   # Yeu cau it nhat 10 mau o moi la
+            max_depth=6,   # Gioi han do sau de tranh overfitting
+            min_samples_split=30,  # Yeu cau it nhat 20 mau de phan tach
+            min_samples_leaf=15,   # Yeu cau it nhat 10 mau o moi la
             class_weight='balanced',  # Can bang trong so cac lop
             random_state=42
         ),
@@ -627,7 +628,7 @@ def train_models(X_train, X_test, y_train, y_test):
     # Kiem tra neu so luong dac trung qua lon, them SVM voi kernel linear
     if X_train.shape[1] < 1000:  # Chi su dung SVM neu so luong dac trung vua phai
         models['SVM'] = SVC(
-            C=1.0,               # Tham so regularization
+            C=0.1,               # Tham so regularization
             kernel='rbf',        # Kernel radial basis function
             gamma='scale',       # Tham so gamma tu dong theo so luong dac trung
             probability=True,    # Cho phep tinh xac suat
