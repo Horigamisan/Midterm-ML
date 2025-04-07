@@ -7,7 +7,7 @@ This repository contains machine learning projects and experiments developed as 
 1. Clone the repository
 2. Install dependencies (if any)
 ```bash
-pip install -r requirements.txt
+pip install -r src/requirements.txt
 ```
 
 ## Usage
