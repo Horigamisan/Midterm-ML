@@ -20,7 +20,7 @@ def main():
     X_train, X_test, y_train, y_test = preprocess_data(X, y, test_size=0.25, random_state=42)
     
     # 5. Huấn luyện và đánh giá các mô hình
-    models, results = train_models(X_train, X_test, y_train, y_test) # Hoặc 'overfitting'
+    models, results = train_models(X_train, X_test, y_train, y_test, type_model='before_overfitting') #hoac 'after_overfitting' 
     
 if __name__ == "__main__":
     main()

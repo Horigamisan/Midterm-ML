@@ -12,7 +12,7 @@ from training.compare_models import compare_models
 from training.evaluate import evaluate_model
 
 
-def train_models(X_train, X_test, y_train, y_test, type_model='underfitting'):
+def train_models(X_train, X_test, y_train, y_test, type_model='before_overfitting'):
     """
     Tao va huan luyen cac mo hinh phan loai cho du lieu da duoc lam sach.
     
@@ -21,6 +21,7 @@ def train_models(X_train, X_test, y_train, y_test, type_model='underfitting'):
     X_test: DataFrame chua cac dac trung cua tap kiem tra
     y_train: Series chua nhan cua tap huan luyen
     y_test: Series chua nhan cua tap kiem tra
+    type_model: before hoac after overfitting, chi dinh loai mo hinh can huan luyen
     
     Returns:
     models: Dictionary chua cac mo hinh da duoc huan luyen
@@ -157,7 +158,7 @@ def train_models(X_train, X_test, y_train, y_test, type_model='underfitting'):
         )
 
     
-    main_models = models if type_model == 'underfitting' else over_models
+    main_models = models if type_model == 'before_overfitting' else over_models
     
     # Ket qua danh gia cua cac mo hinh
     results = []
